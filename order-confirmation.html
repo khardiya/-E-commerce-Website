@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="#">E-Shop</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -49,18 +52,12 @@
         <hr class="my-4">
         <h4>Order Summary</h4>
         <ul class="list-group mb-4">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Smartphone
-            <span>$599</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Headphones
-            <span>$199</span>
-          </li>
+
         </ul>
 
         <h4>Total: $798</h4>
-        <p>Your order will be shipped to the address you provided. You will receive an email notification once the order has been dispatched.</p>
+        <p>Your order will be shipped to the address you provided. You will receive an email notification once the order
+          has been dispatched.</p>
 
         <a href="index.html" class="btn btn-primary btn-lg">Return to Home</a>
       </div>
@@ -68,75 +65,85 @@
   </div>
 
   <!-- Footer -->
-<footer class="bg-dark text-white text-center py-4">
-  <div class="container">
-    <p class="mb-2">&copy; 2024 <strong>E-Shop</strong>. All Rights Reserved.</p>
-    <p class="mb-0">
-      <a href="#" class="text-white text-decoration-underline me-3">Terms & Conditions</a>
-      <a href="#" class="text-white text-decoration-underline">Privacy Policy</a>
-    </p>
-    <div class="social-icons mt-3">
-      <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p class="mb-2">&copy; 2024 <strong>E-Shop</strong>. All Rights Reserved.</p>
+      <p class="mb-0">
+        <a href="#" class="text-white text-decoration-underline me-3">Terms & Conditions</a>
+        <a href="#" class="text-white text-decoration-underline">Privacy Policy</a>
+      </p>
+      <div class="social-icons mt-3">
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 
-<!-- Scroll to Top Button -->
-<button id="scrollToTopBtn" class="btn btn-primary position-fixed bottom-3 end-3 d-none" title="Back to Top">
-  &#8679;
-</button>
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="btn btn-primary position-fixed bottom-3 end-3 d-none" title="Back to Top">
+    &#8679;
+  </button>
 
-<!-- JavaScript -->
-<script defer>
-  const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+  <!-- JavaScript -->
+  <script defer>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
-  // Show button when scrolling down
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      scrollToTopBtn.classList.remove('d-none');
-    } else {
-      scrollToTopBtn.classList.add('d-none');
-    }
-  });
-
-  // Smooth scroll to top
-  scrollToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollToTopBtn.classList.remove('d-none');
+      } else {
+        scrollToTopBtn.classList.add('d-none');
+      }
     });
-  });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
-    if (orderDetails) {
-      document.querySelector('h3').textContent = `Order Number: #${Math.floor(Math.random() * 1000000000)}`;
-      document.querySelector('.lead').textContent = `Thank you, ${orderDetails.fullName}, for shopping with us!`;
-      const summary = document.querySelector('.list-group');
-      let totalPrice = 0;
-
-      orderDetails.cart.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item d-flex justify-content-between align-items-center';
-        li.innerHTML = `${item.name} (x${item.quantity}) <span>$${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</span>`;
-        summary.appendChild(li);
-        totalPrice += parseFloat(item.price.replace('$', '')) * item.quantity;
+    // Smooth scroll to top
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
       });
+    });
 
-      document.querySelector('h4').textContent = `Total: $${totalPrice.toFixed(2)}`;
-    }
-  });
+    document.addEventListener('DOMContentLoaded', () => {
+      const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+      if (orderDetails) {
+        document.querySelector('h3').textContent = `Order Number: #${Math.floor(Math.random() * 1000000000)}`;
+        document.querySelector('.lead').textContent = `Thank you, ${orderDetails.fullName}, for shopping with us!`;
+
+        const summary = document.querySelector('.list-group');
+        let totalPrice = 0;
+
+        // Populate order summary
+        orderDetails.cart.forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'list-group-item d-flex justify-content-between align-items-center';
+          li.innerHTML = `${item.name} (x${item.quantity}) <span>$${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</span>`;
+          summary.appendChild(li);
+          totalPrice += parseFloat(item.price.replace('$', '')) * item.quantity;
+        });
+
+        // Update total price
+        document.querySelector('h4').textContent = `Total: $${totalPrice.toFixed(2)}`;
+      } else {
+        // Handle missing order details
+        document.querySelector('.lead').textContent = "No order details found!";
+        document.querySelector('.list-group').innerHTML = "";
+        document.querySelector('h4').textContent = "Total: $0.00";
+      }
+    });
 
 
-</script>
+  </script>
 
 
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
