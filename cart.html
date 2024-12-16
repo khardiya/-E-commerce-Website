@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">E-Com</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="cart.html">Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Section -->
+  <div class="container mt-5">
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="row">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+    <div id="cart-summary" class="mt-3">
+      <h3>Total: $<span id="total-price">0.00</span></h3>
+      <button id="checkout-btn" class="btn btn-primary">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Function to get cart data from localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    // Function to update the cart display
+    function updateCart() {
+      const cart = getCart();
+      const cartItemsDiv = document.getElementById('cart-items');
+      const totalPriceSpan = document.getElementById('total-price');
+      cartItemsDiv.innerHTML = ''; // Clear existing content
+
+      let totalPrice = 0;
+
+      cart.forEach(item => {
+        totalPrice += parseFloat(item.price.replace('$', '')) * item.quantity;
+
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('col-md-12', 'mb-3');
+        cartItemDiv.innerHTML = `
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-3">
+                <img src="${item.image}" class="img-fluid rounded-start" alt="${item.name}">
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-text">${item.price}</p>
+                  <div class="d-flex align-items-center">
+                    <label for="quantity-${item.id}" class="me-2">Quantity:</label>
+                    <input type="number" id="quantity-${item.id}" class="form-control" value="${item.quantity}" min="1" style="width: 60px;">
+                    <button class="btn btn-danger ms-3 remove-item" data-id="${item.id}">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        cartItemsDiv.appendChild(cartItemDiv);
+      });
+
+      // Update total price
+      totalPriceSpan.textContent = totalPrice.toFixed(2);
+    }
+
+    // Function to remove an item from the cart
+    function removeItemFromCart(id) {
+      let cart = getCart();
+      cart = cart.filter(item => item.id !== id); // Remove item by id
+      localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
+      updateCart(); // Update UI
+    }
+
+    // Function to update the quantity of an item in the cart
+    function updateQuantity(id, newQuantity) {
+      let cart = getCart();
+      const item = cart.find(item => item.id === id);
+      if (item) {
+        item.quantity = newQuantity;
+        localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
+        updateCart(); // Update UI
+      }
+    }
+
+    // Event listener for removing items
+    document.getElementById('cart-items').addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-item')) {
+        const itemId = parseInt(e.target.getAttribute('data-id'));
+        removeItemFromCart(itemId);
+      }
+    });
+
+    // Event listener for quantity changes
+    document.getElementById('cart-items').addEventListener('input', (e) => {
+      if (e.target.type === 'number') {
+        const itemId = parseInt(e.target.id.replace('quantity-', ''));
+        const newQuantity = parseInt(e.target.value);
+        if (newQuantity > 0) {
+          updateQuantity(itemId, newQuantity);
+        } else {
+          alert('Quantity must be at least 1');
+        }
+      }
+    });
+
+    // Event listener for "Proceed to Checkout"
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      const cart = getCart();
+      if (cart.length > 0) {
+        localStorage.setItem('cartForCheckout', JSON.stringify(cart)); // Save cart for checkout
+        window.location.href = 'checkout.html'; // Redirect to checkout page
+      } else {
+        alert('Your cart is empty. Add some products before proceeding to checkout.');
+      }
+    });
+
+    // Initialize the cart on page load
+    document.addEventListener('DOMContentLoaded', updateCart);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

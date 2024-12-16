@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Products - E-Shop</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">E-Shop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="search.html">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="products.html">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Cart</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Section -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Search Products</h1>
+
+    <!-- Search Form -->
+    <div class="row mb-4">
+      <div class="col-md-8 offset-md-2">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchQuery" placeholder="Search for products..." onkeyup="performSearch()">
+          <button class="btn btn-primary" onclick="performSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Results -->
+    <h2 class="text-center mb-4" id="resultsHeader">Search Results</h2>
+    <div class="row" id="searchResults">
+      <!-- Search Results will be dynamically added here -->
+    </div>
+  </div>
+
+  
+  <section class="container mt-5">
+    <div class="row g-4">
+      <!-- Product 1 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="599">
+          <img src="images/product1.webp" class="card-img-top img-fluid" alt="Product 1" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Smartphone</h5>
+            <p class="card-text">$599</p>
+            <a href="product-view.html?id=1" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 2 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="199">
+          <img src="images/product2.webp" class="card-img-top img-fluid" alt="Product 2" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Headphones</h5>
+            <p class="card-text">$199</p>
+            <a href="product-view.html?id=2" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 3 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="149">
+          <img src="images/product3.webp" class="card-img-top img-fluid" alt="Product 3" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Smartwatch</h5>
+            <p class="card-text">$149</p>
+            <a href="product-view.html?id=3" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 4 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="799">
+          <img src="images/product4.webp" class="card-img-top img-fluid" alt="Product 4" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Camera</h5>
+            <p class="card-text">$799</p>
+            <a href="product-view.html?id=4" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 5 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="1099">
+          <img src="images/product5.jpg" class="card-img-top img-fluid" alt="Product 5" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Laptop</h5>
+            <p class="card-text">$1099</p>
+            <a href="product-view.html?id=5" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 6 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="349">
+          <img src="images/product6.jpg" class="card-img-top img-fluid" alt="Product 6" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Tablet</h5>
+            <p class="card-text">$349</p>
+            <a href="product-view.html?id=6" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 7 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="79">
+          <img src="images/product7.jpg" class="card-img-top img-fluid" alt="Product 7" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Bluetooth Speaker</h5>
+            <p class="card-text">$79</p>
+            <a href="product-view.html?id=7" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 8 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="799">
+          <img src="images/product8.jpg" class="card-img-top img-fluid" alt="Product 8" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Smart TV</h5>
+            <p class="card-text">$799</p>
+            <a href="product-view.html?id=8" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 9 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="129">
+          <img src="images/product9.jpg" class="card-img-top img-fluid" alt="Product 9" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Smart Watch</h5>
+            <p class="card-text">$129</p>
+            <a href="product-view.html?id=9" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 10 -->
+      <div class="col-md-3">
+        <div class="card" data-category="accessories" data-price="49">
+          <img src="images/product10.jpg" class="card-img-top img-fluid" alt="Product 10" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Gaming Mouse</h5>
+            <p class="card-text">$49</p>
+            <a href="product-view.html?id=10" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 11 -->
+      <div class="col-md-3">
+        <div class="card" data-category="accessories" data-price="69">
+          <img src="images/product11.jpg" class="card-img-top img-fluid" alt="Product 11" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Keyboard</h5>
+            <p class="card-text">$69</p>
+            <a href="product-view.html?id=11" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 12 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="89">
+          <img src="images/product12.jpg" class="card-img-top img-fluid" alt="Product 12" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">External Hard Drive</h5>
+            <p class="card-text">$89</p>
+            <a href="product-view.html?id=12" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 13 -->
+      <div class="col-md-3">
+        <div class="card" data-category="accessories" data-price="29">
+          <img src="images/product13.jpg" class="card-img-top img-fluid" alt="Product 13" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Portable Charger</h5>
+            <p class="card-text">$29</p>
+            <a href="product-view.html?id=13" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 14 -->
+      <div class="col-md-3">
+        <div class="card" data-category="accessories" data-price="59">
+          <img src="images/product14.jpg" class="card-img-top img-fluid" alt="Product 14" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Wireless Earbuds</h5>
+            <p class="card-text">$59</p>
+            <a href="product-view.html?id=14" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Product 15 -->
+      <div class="col-md-3">
+        <div class="card" data-category="electronics" data-price="199">
+          <img src="images/product15.jpg" class="card-img-top img-fluid" alt="Product 15" style="height: 200px; object-fit: cover;">
+          <div class="card-body text-center">
+            <h5 class="card-title">Smart Home Device</h5>
+            <p class="card-text">$199</p>
+            <a href="product-view.html?id=15" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p class="mb-2">&copy; 2024 <strong>E-Shop</strong>. All Rights Reserved.</p>
+      <p class="mb-0">
+        <a href="#" class="text-white text-decoration-underline me-3">Terms & Conditions</a>
+        <a href="#" class="text-white text-decoration-underline">Privacy Policy</a>
+      </p>
+      <div class="social-icons mt-3">
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" class="btn btn-primary position-fixed bottom-3 end-3 d-none" title="Back to Top">
+    &#8679;
+  </button>
+
+  <!-- JavaScript -->
+  <script defer>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    const productList = document.getElementById('productList');
+
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollToTopBtn.classList.remove('d-none');
+      } else {
+        scrollToTopBtn.classList.add('d-none');
+      }
+    });
+
+    // Smooth scroll to top
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    // Perform search when the search button is clicked
+    const searchButton = document.querySelector("button[onclick='performSearch()']");
+    if (searchButton) {
+      searchButton.addEventListener('click', performSearch);
+    }
+
+    function performSearch() {
+      const query = document.getElementById('searchQuery').value.toLowerCase();
+      const products = document.querySelectorAll('.card');  // Make sure we're targeting the correct elements
+      let resultsFound = false;
+
+      console.log('Searching for:', query); // Log the search query
+
+      products.forEach(product => {
+        const productName = product.querySelector('.card-title').textContent.toLowerCase();
+        const productCategory = product.getAttribute('data-category').toLowerCase();
+
+        // Log each product's name and category being checked
+        console.log('Checking product:', productName, 'Category:', productCategory);
+
+        // Check if the query matches the product name or category
+        if (productName.includes(query) || productCategory.includes(query)) {
+          product.style.display = 'block'; // Show matching product
+          resultsFound = true;
+          console.log('Match found:', productName);
+        } else {
+          product.style.display = 'none'; // Hide non-matching product
+        }
+      });
+
+      // Show the correct results header
+      const resultsHeader = document.getElementById('resultsHeader');
+      resultsHeader.textContent = resultsFound ? 'Search Results' : 'No Results Found';
+    }
+  });
+</script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
