@@ -1,1 +1,69 @@
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+#scrollToTopBtn:hover {
+  background-color: #495057; /* Slightly lighter on hover */
+}
+/* Custom button styles */
+#scrollToTopBtn 
+  {
+  background-color: hsla(350, 100%, 57%, 0.875); /* Example color */
+  border: 2px solid black;
+}
+
+/* Ensure links are clickable */
+a {
+  pointer-events: auto !important;
+}
+
+
+  /* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Adjust font sizes for small screens */
+  h1, h2, h3, h4 {
+    font-size: calc(1.5rem + 1vw);
+  }
+/* Add subtle hover effect for products */
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+
+  #features {
+    background-color: #f9f9f9; /* Light gray background */
+  }
+  
+  #features .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #features .card:hover {
+    transform: translateY(-5px); /* Hover effect: card lifts slightly */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+  }
+
+  #features .icon-container i {
+    transition: transform 0.3s ease;
+  }
+
+  #features .card-body:hover .icon-container i {
+    transform: rotate(10deg); /* Small rotation effect on hover */
+  }
+
+  
+  /* Ensure all product images have the same size */
+.card-img-top {
+  width: 100%; /* Make the image take up full width of the card */
+  height: 200px; /* Set a fixed height for all images */
+  object-fit: cover; /* Make sure the image covers the area without stretching */
+}
 
